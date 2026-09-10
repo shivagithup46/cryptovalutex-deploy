@@ -1,0 +1,66 @@
+server:
+  port: 8080
+  
+
+spring:
+  application:
+    name: cryptovaultx
+
+  profiles:
+    active: local
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/cryptovaultx?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: crytpto_db
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+
+  flyway:
+    enabled: false
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: vmshiva5@gmail.com
+    password: glolouozoygfiaxc
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+
+  redis:
+    host: localhost
+    port: 6379
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: cryptovaultx-group
+
+jwt:
+  secret: ${JWT_SECRET:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef}
+  expiration: 86400000
+  refresh-expiration: 604800000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: cryptovaultx
+    export:
+      prometheus:
+        enabled: true # 1 day in milliseconds
+

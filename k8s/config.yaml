@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cryptovaultx-config
+data:
+  DB_NAME: "cryptovaultx"
+  DB_USER: "postgres"
+  SPRING_PROFILES_ACTIVE: "prod"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres-service:5432/cryptovaultx"
+  SPRING_REDIS_HOST: "redis-service"
+  SPRING_KAFKA_BOOTSTRAP_SERVERS: "kafka-service:9092"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cryptovaultx-secrets
+type: Opaque
+stringData:
+  DB_PASSWORD: "supersecurepassword123"
+  JWT_SECRET: "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
