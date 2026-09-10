@@ -1,4 +1,4 @@
-﻿services:
+services:
   - type: web
     name: cryptovaultx-backend
     runtime: docker
@@ -8,3 +8,5 @@
     envVars:
       - key: PORT
         value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: live
