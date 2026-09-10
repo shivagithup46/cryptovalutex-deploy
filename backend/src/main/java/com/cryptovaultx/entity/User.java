@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "users")
+@Table(name = "app_users")
 @Getter
 @Setter
 @NoArgsConstructor
